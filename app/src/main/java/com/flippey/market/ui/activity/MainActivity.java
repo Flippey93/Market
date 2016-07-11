@@ -1,12 +1,16 @@
-package com.flippey.market;
+package com.flippey.market.ui.activity;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+
+import com.flippey.market.R;
+import com.flippey.market.ui.widget.PagerSlidingTab;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     FrameLayout mLeftMenu;
     @BindView(R.id.main_drawer_layout)
     DrawerLayout mDrawerLayout;
+    @BindView(R.id.main_pst)
+    PagerSlidingTab mSlidingTab;
+    @BindView(R.id.main_viewpager)
+    ViewPager mViewpager;
     private ActionBar mActionBar;
     private ActionBarDrawerToggle mToggle;
 
@@ -30,9 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         initActionBar();
-        initFragment();
+        initView();
     }
-
 
 
     /**
@@ -62,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 初始化Fragment
      */
-    private void initFragment() {
+    private void initView() {
 
     }
 }
