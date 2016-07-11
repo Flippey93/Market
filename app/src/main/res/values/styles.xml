@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <!--更改ActionBar的背景色-->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!--设置状态栏的颜色-->
         <!--<item name="colorAccent">@color/colorAccent</item>-->
     </style>

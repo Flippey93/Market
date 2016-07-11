@@ -28,6 +28,7 @@
     <string name="load_error">重新加载</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="action_title">App批发市场</string>
     <string-array name="tab_names">
         <item>首页</item>
         <!--<item>应用</item>
