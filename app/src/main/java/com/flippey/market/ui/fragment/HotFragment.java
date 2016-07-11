@@ -11,6 +11,11 @@ import com.flippey.market.global.MyAppliocation;
  */
 public class HotFragment extends BaseFragment {
     @Override
+    protected Object initData() {
+        return null;
+    }
+
+    @Override
     public View onCreateSuccess() {
         TextView textView = new TextView(MyAppliocation.sContext);
         textView.setText("HotFragment");

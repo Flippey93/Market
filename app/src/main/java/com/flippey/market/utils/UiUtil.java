@@ -9,6 +9,9 @@ import android.view.View;
 
 import com.flippey.market.global.MyAppliocation;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 /**
  * @ Author      Flippey
  * @ Creat Time  2016/7/2 11:39
@@ -90,5 +93,10 @@ public class UiUtil {
             //如果是子线程,则利用handler运行在主线程,把runnable对象post到消息队列
             getHandler().post(r);
         }
+    }
+    //运行在子线程
+    private static Executor sSingleThreadPool = Executors.newSingleThreadExecutor();
+    public static void runOnSubThread(Runnable runnable){
+        sSingleThreadPool.execute(runnable);
     }
 }

@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.flippey.market.R;
+import com.flippey.market.utils.UiUtil;
+
+import java.util.List;
 
 /**
  * @ Author      Flippey
@@ -53,13 +56,13 @@ public abstract class LoadPager extends FrameLayout {
             mSuccessPager = creatSuccessPager();
         }
         addView(mSuccessPager);
+        initPager();
         showRightPager();
     }
-
     /**
-     * 显示正确的page,根据当前的状态显示
+     * 初始化pager
      */
-    public void showRightPager(){
+    public void initPager(){
         mLoadPager.setVisibility(GONE);
         mErrorPager.setVisibility(GONE);
         mSuccessPager.setVisibility(GONE);
@@ -76,8 +79,52 @@ public abstract class LoadPager extends FrameLayout {
             default:
                 break;
         }
-
     }
+
+    /**
+     * 获取数据，展示pager
+     */
+    private void showRightPager() {
+        UiUtil.runOnSubThread(new Runnable() {
+            @Override
+            public void run() {
+                if (loadData() == null) {
+                    mCurrentState = mErrorState;
+                } else {
+                    Object object = loadData();
+                    mCurrentState= checkData(object);
+                }
+                UiUtil.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //更新界面
+                        initPager();
+                    }
+                });
+            }
+        });
+    }
+
+    private int checkData(Object object) {
+        //判断对象是否为空，如果是集合，则判断大小是否为0
+        if (object == null) {
+            return mErrorState;
+        } else {
+            //判断是否属于集合
+            if (object instanceof List) {
+                if (((List) object).size() <= 0) {
+                    return mErrorState;
+                }
+            }
+        }
+        return mSuccessState;
+    }
+
+    /**
+     * 加载数据
+     */
+    protected abstract Object loadData();
+
     /**
      * 由具体的实现类返回加载成功的布局
      * @return
