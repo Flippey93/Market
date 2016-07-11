@@ -25,9 +25,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        initActionBar();
+        init();
     }
 
+    private void init() {
+        initActionBar();
+        initFragment();
+    }
+
+
+
+    /**
+     * 初始化actionbar
+     */
     private void initActionBar() {
         mActionBar = getSupportActionBar();
         mActionBar.setTitle(R.string.action_title);
@@ -47,5 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 初始化Fragment
+     */
+    private void initFragment() {
+
     }
 }

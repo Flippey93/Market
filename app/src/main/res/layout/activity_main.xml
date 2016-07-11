@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <!--主界面-->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <!--Tabs-->
         <com.flippey.market.ui.widget.PagerSlidingTab
             android:id="@+id/main_pst"
             android:layout_width="match_parent"
@@ -20,6 +22,7 @@
             android:layout_height="match_parent">
         </android.support.v4.view.ViewPager>
     </LinearLayout>
+    <!--侧滑菜单-->
     <FrameLayout
         android:layout_gravity="left"
         android:background="#ff0000"
