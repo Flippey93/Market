@@ -20,12 +20,11 @@ public abstract class LoadPager extends FrameLayout {
     public static final int mLoadingState = 100; //加载状态
     public static final int mSuccessState = 200; //加载成功状态
     public static final int mErrorState = 400; //加载失败状态
-    public  int mCurrentState = mLoadingState;
+    public  int mCurrentState = mSuccessState;
 
 
     public LoadPager(Context context) {
         this(context,null);
-        //initView(context);
     }
 
     public LoadPager(Context context, AttributeSet attrs) {

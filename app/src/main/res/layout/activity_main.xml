@@ -14,12 +14,13 @@
         <com.flippey.market.ui.widget.PagerSlidingTab
             android:id="@+id/main_pst"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="45dp">
         </com.flippey.market.ui.widget.PagerSlidingTab>
         <android.support.v4.view.ViewPager
             android:id="@+id/main_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
         </android.support.v4.view.ViewPager>
     </LinearLayout>
     <!--侧滑菜单-->

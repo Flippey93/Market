@@ -23,14 +23,12 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mLoadPager = new LoadPager(MyAppliocation.sContext){
-
             @Override
             protected View creatSuccessPager() {
                 return onCreateSuccess();
             }
         };
         return mLoadPager;
-
     }
 
     public abstract View onCreateSuccess();

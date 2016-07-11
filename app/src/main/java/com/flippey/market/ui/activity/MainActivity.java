@@ -10,7 +10,9 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.flippey.market.R;
+import com.flippey.market.adapter.FragmentAdapter;
 import com.flippey.market.ui.widget.PagerSlidingTab;
+import com.flippey.market.utils.UiUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     ViewPager mViewpager;
     private ActionBar mActionBar;
     private ActionBarDrawerToggle mToggle;
+    private String[] mTabsName;
+    private FragmentAdapter mFragmentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
      * 初始化Fragment
      */
     private void initView() {
-
+        mTabsName = UiUtil.getStringArray(R.array.tab_names);
+        mFragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), mTabsName);
+        mViewpager.setAdapter(mFragmentAdapter);
+        //记得要绑定viewpager
+        mSlidingTab.setViewPager(mViewpager);
     }
 }

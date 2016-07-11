@@ -1,6 +1,9 @@
 package com.flippey.market.ui.fragment;
 
 import android.view.View;
+import android.widget.TextView;
+
+import com.flippey.market.global.MyAppliocation;
 
 /**
  * @ Author      Flippey
@@ -9,6 +12,8 @@ import android.view.View;
 public class AppFragment extends BaseFragment {
     @Override
     public View onCreateSuccess() {
-        return null;
+        TextView textView = new TextView(MyAppliocation.sContext);
+        textView.setText("AppFragment");
+        return textView;
     }
 }
