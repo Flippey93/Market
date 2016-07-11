@@ -25,6 +25,7 @@ public abstract class LoadPager extends FrameLayout {
 
     public LoadPager(Context context) {
         this(context,null);
+        //initView(context);
     }
 
     public LoadPager(Context context, AttributeSet attrs) {
