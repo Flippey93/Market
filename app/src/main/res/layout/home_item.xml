@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:clickable="true"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/selector_list_item"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/home_item_iv_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/ic_launcher"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/home_item_iv_icon"
+                android:orientation="vertical">
+
+                <TextView
+                    android:textColor="#000"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/home_item_tv_name"
+                    android:text="有雨网"/>
+
+                <RatingBar
+                    android:id="@+id/home_item_iv_star"
+                    style="@android:style/Widget.RatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:maxHeight="16dp"
+                    android:minHeight="16dp"
+                    android:numStars="5"
+                    android:progressDrawable="@drawable/star"
+                    android:rating="3.5"/>
+                <TextView
+                    android:textColor="#000"
+                    android:id="@+id/home_item_tv_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.7M"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D4D4D4">
+
+        </View>
+
+        <!--android:maxLines="1"
+        android:ellipsize="end"-->
+        <TextView
+            android:textColor="#000"
+            android:singleLine="true"
+            android:id="@+id/home_item_tv_desc"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="你好,来个美女机器人,我需要打扫一下房间"/>
+    </LinearLayout>
+</LinearLayout>

@@ -23,15 +23,15 @@ public abstract class LoadPager extends FrameLayout {
     public static final int mLoadingState = 100; //加载状态
     public static final int mSuccessState = 200; //加载成功状态
     public static final int mErrorState = 400; //加载失败状态
-    public  int mCurrentState = mSuccessState;
+    public int mCurrentState = mSuccessState;
 
 
     public LoadPager(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public LoadPager(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public LoadPager(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -41,6 +41,7 @@ public abstract class LoadPager extends FrameLayout {
 
     /**
      * 初始化界面，三个状态的界面叠加在一起
+     *
      * @param context
      */
     public void initView(Context context) {
@@ -59,10 +60,11 @@ public abstract class LoadPager extends FrameLayout {
         initPager();
         showRightPager();
     }
+
     /**
      * 初始化pager
      */
-    public void initPager(){
+    public void initPager() {
         mLoadPager.setVisibility(GONE);
         mErrorPager.setVisibility(GONE);
         mSuccessPager.setVisibility(GONE);
@@ -88,12 +90,8 @@ public abstract class LoadPager extends FrameLayout {
         UiUtil.runOnSubThread(new Runnable() {
             @Override
             public void run() {
-                if (loadData() == null) {
-                    mCurrentState = mErrorState;
-                } else {
-                    Object object = loadData();
-                    mCurrentState= checkData(object);
-                }
+                Object object = loadData();
+                mCurrentState = checkData(object);
                 UiUtil.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -127,6 +125,7 @@ public abstract class LoadPager extends FrameLayout {
 
     /**
      * 由具体的实现类返回加载成功的布局
+     *
      * @return
      */
     protected abstract View creatSuccessPager();

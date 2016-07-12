@@ -20,7 +20,7 @@ public class HomeBean {
      * des : 产品介绍：有缘是时下最受大众单身男女亲睐的婚恋交友软件。有缘网专注于通过轻松、
      */
 
-    private List<ListBean> list;
+    private List<AppInfo> list;
 
     public List<String> getPicture() {
         return picture;
@@ -30,15 +30,15 @@ public class HomeBean {
         this.picture = picture;
     }
 
-    public List<ListBean> getList() {
+    public List<AppInfo> getList() {
         return list;
     }
 
-    public void setList(List<ListBean> list) {
+    public void setList(List<AppInfo> list) {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class AppInfo {
         private int id;
         private String name;
         private String packageName;

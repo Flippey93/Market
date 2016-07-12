@@ -17,23 +17,27 @@ import java.security.NoSuchAlgorithmException;
 public class CacheUtil {
 
     private String mCacheDir;
+
     //缓存本地的路径为sd/包名/cache/
     private CacheUtil() {
         mCacheDir = Environment.getExternalStorageDirectory().getPath() + File.separator +
                 MyAppliocation
-                .sContext.getPackageName() + File.separator + "cache";
+                        .sContext.getPackageName() + File.separator + "cache";
         File cacheFile = new File(mCacheDir);
         if (!cacheFile.exists()) {
             cacheFile.mkdir();
         }
     }
-    private static CacheUtil mGetCacheUtil = new CacheUtil();
+
+    private static CacheUtil mCacheUtil = new CacheUtil();
+
     public static CacheUtil getCacheUtil() {
-        return mGetCacheUtil;
+        return mCacheUtil;
     }
 
     /**
      * 获取缓存的数据
+     *
      * @param url
      * @return
      */
@@ -48,7 +52,6 @@ public class CacheUtil {
                 cacheData.append(new String(buffer, 0, len));
             }
             is.close();
-            System.out.println("从本地缓存获取数据.................");
             return cacheData.toString();
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,10 +61,11 @@ public class CacheUtil {
 
     /**
      * 缓存数据到本地
+     *
      * @param url
      * @param jsonData
      */
-    public void saveCacheData(String url,String jsonData) {
+    public void saveCacheData(String url, String jsonData) {
         try {
             String filename = md5FileName(url);
             File file = new File(mCacheDir, filename);
@@ -76,7 +80,7 @@ public class CacheUtil {
     }
 
 
-    private String  md5FileName(String url) throws NoSuchAlgorithmException {
+    private String md5FileName(String url) throws NoSuchAlgorithmException {
         StringBuffer fileName = new StringBuffer();
         MessageDigest digester = MessageDigest.getInstance("MD5");
         digester.update(url.getBytes());//得到加密的字符

@@ -1,13 +1,18 @@
 package com.flippey.market.ui.fragment;
 
-import android.graphics.Color;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ListView;
 
+import com.flippey.market.R;
+import com.flippey.market.adapter.HomeAdapter;
 import com.flippey.market.bean.HomeBean;
 import com.flippey.market.datamanager.DataLoader;
 import com.flippey.market.global.MyAppliocation;
+import com.flippey.market.utils.UiUtil;
 import com.flippey.market.utils.UrlUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ Author      Flippey
@@ -15,19 +20,33 @@ import com.flippey.market.utils.UrlUtil;
  */
 public class HomeFragment extends BaseFragment {
 
-    private TextView mTextView;
+    private ListView mListView;
+    private List<HomeBean.AppInfo> mList = new ArrayList<>();
+    private HomeAdapter mAdapter;
 
     @Override
     protected Object initData() {
         HomeBean homeBean = DataLoader.getDataLoader().getDataBean(UrlUtil.homeURL, HomeBean.class);
-        mTextView.setText(homeBean.getList().get(0).getName());
+        final List<HomeBean.AppInfo> list = homeBean.getList();
+        UiUtil.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mList.clear();
+                mList.addAll(list);
+                mAdapter.notifyDataSetChanged();
+            }
+        });
         return homeBean;
     }
 
     @Override
     public View onCreateSuccess() {
-        mTextView = new TextView(MyAppliocation.sContext);
-        mTextView.setTextColor(Color.RED);
-        return mTextView;
+        /*mTextView = new TextView(MyAppliocation.sContext);
+        mTextView.setTextColor(Color.RED);*/
+        mListView = (ListView) View.inflate(MyAppliocation.sContext, R.layout.listview, null);
+        //mListView.setAdapter();
+        mAdapter = new HomeAdapter(mList);
+        mListView.setAdapter(mAdapter);
+        return mListView;
     }
 }

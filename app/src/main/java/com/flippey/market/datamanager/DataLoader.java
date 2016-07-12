@@ -27,14 +27,14 @@ public class DataLoader {
         data = HttpUtil.getHttpUtil().dataGet(url);
         if (TextUtils.isEmpty(data)) {
             //如果data为空则从本地获取数据
+//            System.out.println("....从本地获取数据");
             data = CacheUtil.getCacheUtil().getCacheData(url);
-            System.out.println("....从本地获取");
             if (TextUtils.isEmpty(data)) {
                 return null;
             }
         } else {
-            System.out.println("保存到本地................");
-            //保存数据到本地缓存
+//            System.out.println("从网络保存到本地................");
+            //TODO 保存数据到本地缓存
             CacheUtil.getCacheUtil().saveCacheData(url, data);
         }
         return GsonUtil.parseJsonToBean(data, clazz);
@@ -46,7 +46,8 @@ public class DataLoader {
         data = HttpUtil.getHttpUtil().dataGet(url);
         if (TextUtils.isEmpty(data)) {
             //如果json为空则从本地获取数据
-            data = HttpUtil.getHttpUtil().dataGet(url);
+            data = CacheUtil.getCacheUtil().getCacheData(url);
+            //data = HttpUtil.getHttpUtil().dataGet(url);
             if (TextUtils.isEmpty(data)) {
                 return null;
             }
