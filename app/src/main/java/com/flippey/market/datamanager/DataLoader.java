@@ -6,6 +6,9 @@ import com.flippey.market.utils.CacheUtil;
 import com.flippey.market.utils.GsonUtil;
 import com.flippey.market.utils.HttpUtil;
 
+import java.lang.reflect.Type;
+import java.util.List;
+
 /**
  * @ Author      Flippey
  * @ Creat Time  2016/7/11 22:09
@@ -40,7 +43,7 @@ public class DataLoader {
         return GsonUtil.parseJsonToBean(data, clazz);
     }
 
-    public <T> T getDataList(String url) {
+    public <T> List<T> getDataList(String url,Type type) {
         //先去网络获取数据，如果没有再去本地获取数据
         String data = "";
         data = HttpUtil.getHttpUtil().dataGet(url);
@@ -55,6 +58,6 @@ public class DataLoader {
             //保存数据到本地缓存
             CacheUtil.getCacheUtil().saveCacheData(url, data);
         }
-        return (T) data;
+        return (List<T>) GsonUtil.parseJsonToList(data,type);
     }
 }

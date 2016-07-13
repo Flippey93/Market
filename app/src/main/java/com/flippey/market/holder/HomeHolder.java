@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.flippey.market.R;
 import com.flippey.market.bean.HomeBean;
 import com.flippey.market.global.MyAppliocation;
+import com.flippey.market.utils.UrlUtil;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * @ Author      Flippey
@@ -37,6 +39,9 @@ public class HomeHolder extends BasicHolder<HomeBean.AppInfo>{
         mHome_Size.setText(info.getSize()+"");
         mHome_Desc.setText(info.getDes());
         mHome_Star.setRating(info.getStars());
+
+        //加载图片
+        ImageLoader.getInstance().displayImage(UrlUtil.imgURL+info.getIconUrl(),mHome_Icon,options);
     }
 
 }

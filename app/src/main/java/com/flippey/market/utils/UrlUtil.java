@@ -9,6 +9,11 @@ public class UrlUtil {
     //    http://127.0.0.1:8090/home?index=0
     //主机地址
     public static final String hostURL = "http://127.0.0.1:8090/";
+    //图片前缀
+    public static final String imgURL = hostURL+"image?name=";
     //home地址
     public static final String homeURL = hostURL+"home?index=0";
+    //专题地址
+    public static final String subURL = hostURL+"subject?index=0";
+    //
 }
