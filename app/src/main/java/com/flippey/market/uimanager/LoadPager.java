@@ -121,7 +121,7 @@ public abstract class LoadPager extends FrameLayout {
     /**
      * 加载数据
      */
-    protected abstract Object loadData();
+    public abstract Object loadData();
 
     /**
      * 由具体的实现类返回加载成功的布局

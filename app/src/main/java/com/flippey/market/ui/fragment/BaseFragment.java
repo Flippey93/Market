@@ -17,14 +17,14 @@ import com.flippey.market.uimanager.LoadPager;
  */
 public abstract class BaseFragment extends Fragment {
 
-    private LoadPager mLoadPager;
+    public LoadPager mLoadPager;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mLoadPager = new LoadPager(MyAppliocation.sContext){
             @Override
-            protected Object loadData() {
+            public Object loadData() {
                 return initData();
             }
 

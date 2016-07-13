@@ -86,13 +86,7 @@ public class UiUtil {
     }
     //让当前线程运行在主线程
     public static void runOnUiThread(Runnable r) {
-        if (isRunOnUiThread()) {
-            //如果当前是主线程,则直接运行
-            r.run();
-        } else {
-            //如果是子线程,则利用handler运行在主线程,把runnable对象post到消息队列
-            getHandler().post(r);
-        }
+        getHandler().post(r);
     }
     //运行在子线程
     private static Executor sSingleThreadPool = Executors.newSingleThreadExecutor();

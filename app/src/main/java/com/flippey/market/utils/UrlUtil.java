@@ -12,8 +12,8 @@ public class UrlUtil {
     //图片前缀
     public static final String imgURL = hostURL+"image?name=";
     //home地址
-    public static final String homeURL = hostURL+"home?index=0";
+    public static final String homeURL = hostURL+"home?index=";
     //专题地址
-    public static final String subURL = hostURL+"subject?index=0";
+    public static final String subURL = hostURL+"subject?index=";
     //
 }
