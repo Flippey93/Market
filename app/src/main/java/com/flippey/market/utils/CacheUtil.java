@@ -25,7 +25,7 @@ public class CacheUtil {
                         .sContext.getPackageName() + File.separator + "cache";
         File cacheFile = new File(mCacheDir);
         if (!cacheFile.exists()) {
-            cacheFile.mkdir();
+            cacheFile.mkdirs();
         }
     }
 

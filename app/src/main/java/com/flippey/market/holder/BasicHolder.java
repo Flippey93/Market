@@ -7,16 +7,17 @@ import android.view.View;
  * @ Creat Time  2016/7/12 19:59
  */
 public abstract class BasicHolder<T>{
-    public View mView;
+    View convertView;
 
     public BasicHolder() {
-        //获取convertview
-        mView = CreateItemView();
-        //绑定holder
-        mView.setTag(this);
+        convertView = creatConvertView();
+        convertView.setTag(this);
     }
 
-    public abstract View CreateItemView();
-    //绑定数据
+    public View getConvertView() {
+        return convertView;
+    }
+
+    public abstract View creatConvertView();
     public abstract void bindData(T t);
 }

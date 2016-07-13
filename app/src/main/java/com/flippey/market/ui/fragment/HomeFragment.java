@@ -8,7 +8,6 @@ import com.flippey.market.adapter.HomeAdapter;
 import com.flippey.market.bean.HomeBean;
 import com.flippey.market.datamanager.DataLoader;
 import com.flippey.market.global.MyAppliocation;
-import com.flippey.market.utils.UiUtil;
 import com.flippey.market.utils.UrlUtil;
 
 import java.util.ArrayList;
@@ -27,24 +26,22 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected Object initData() {
         HomeBean homeBean = DataLoader.getDataLoader().getDataBean(UrlUtil.homeURL, HomeBean.class);
-        final List<HomeBean.AppInfo> list = homeBean.getList();
-        UiUtil.runOnUiThread(new Runnable() {
+        List<HomeBean.AppInfo> list = homeBean.getList();
+        mList.addAll(list);
+        /*UiUtil.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mList.clear();
                 mList.addAll(list);
                 mAdapter.notifyDataSetChanged();
             }
-        });
+        });*/
         return homeBean;
     }
 
     @Override
     public View onCreateSuccess() {
-        /*mTextView = new TextView(MyAppliocation.sContext);
-        mTextView.setTextColor(Color.RED);*/
         mListView = (ListView) View.inflate(MyAppliocation.sContext, R.layout.listview, null);
-        //mListView.setAdapter();
         mAdapter = new HomeAdapter(mList);
         mListView.setAdapter(mAdapter);
         return mListView;

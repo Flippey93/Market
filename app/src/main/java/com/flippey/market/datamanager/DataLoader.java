@@ -27,13 +27,13 @@ public class DataLoader {
         data = HttpUtil.getHttpUtil().dataGet(url);
         if (TextUtils.isEmpty(data)) {
             //如果data为空则从本地获取数据
-//            System.out.println("....从本地获取数据");
+            System.out.println("....从本地获取数据");
             data = CacheUtil.getCacheUtil().getCacheData(url);
             if (TextUtils.isEmpty(data)) {
                 return null;
             }
         } else {
-//            System.out.println("从网络保存到本地................");
+           System.out.println("从网络保存到本地................");
             //TODO 保存数据到本地缓存
             CacheUtil.getCacheUtil().saveCacheData(url, data);
         }

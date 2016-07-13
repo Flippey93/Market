@@ -13,31 +13,31 @@ import com.flippey.market.global.MyAppliocation;
  * @ Author      Flippey
  * @ Creat Time  2016/7/12 19:43
  */
-public class HomeHolder extends BasicHolder <HomeBean.AppInfo>{
+public class HomeHolder extends BasicHolder<HomeBean.AppInfo>{
 
-    ImageView mIcon;
-    TextView mName;
-    RatingBar mStar;
-    TextView mSize;
-    TextView mDes;
-    View convertView;
+    ImageView mHome_Icon;
+    TextView mHome_Name;
+    TextView  mHome_Size;
+    TextView  mHome_Desc;
+    RatingBar mHome_Star;
     @Override
-    public View CreateItemView() {
-        convertView = View.inflate(MyAppliocation.sContext, R.layout.home_item, null);
-        mIcon = (ImageView) convertView.findViewById(R.id.home_item_iv_icon);
-        mName = (TextView) convertView.findViewById(R.id.home_item_tv_name);
-        mStar = (RatingBar) convertView.findViewById(R.id.home_item_iv_star);
-        mSize = (TextView) convertView.findViewById(R.id.home_item_tv_size);
-        mDes = (TextView) convertView.findViewById(R.id.home_item_tv_desc);
-        return convertView;
+    public View creatConvertView() {
+        View view = View.inflate(MyAppliocation.sContext, R.layout.home_item, null);
+        mHome_Icon = (ImageView) view.findViewById(R.id.home_item_iv_icon);
+        mHome_Name = (TextView) view.findViewById(R.id.home_item_tv_name);
+        mHome_Size = (TextView) view.findViewById(R.id.home_item_tv_size);
+        mHome_Desc = (TextView) view.findViewById(R.id.home_item_tv_desc);
+        mHome_Star = (RatingBar) view.findViewById(R.id.home_item_iv_star);
+        return view;
     }
 
     @Override
     public void bindData(HomeBean.AppInfo info) {
-        mName.setText(info.getName());
-        mStar.setRating(info.getStars());
-        mSize.setText(info.getSize() + "");
-        mDes.setText(info.getDes());
+        mHome_Name.setText(info.getName());
+        mHome_Size.setText(info.getSize()+"");
+        mHome_Desc.setText(info.getDes());
+        mHome_Star.setRating(info.getStars());
     }
 
 }
+
