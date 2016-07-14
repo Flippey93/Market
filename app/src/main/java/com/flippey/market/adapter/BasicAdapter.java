@@ -40,7 +40,7 @@ public abstract class BasicAdapter<T> extends BaseAdapter{
         BasicHolder holder;
         if (convertView == null) {
             //创建viewholder
-            holder = creatViewholder();
+            holder = creatViewholder(position);
         } else {
             holder = (BasicHolder) convertView.getTag();
         }
@@ -48,5 +48,5 @@ public abstract class BasicAdapter<T> extends BaseAdapter{
         return holder.getConvertView();
     }
 
-    abstract BasicHolder creatViewholder();
+    abstract BasicHolder creatViewholder(int position);
 }

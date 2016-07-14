@@ -9,6 +9,8 @@ import android.view.View;
 
 import com.flippey.market.global.MyAppliocation;
 
+import java.util.Random;
+
 /**
  * @ Author      Flippey
  * @ Creat Time  2016/7/2 11:39
@@ -92,4 +94,13 @@ public class UiUtil {
     public static void runOnSubThread(Runnable runnable){
         sSingleThreadPool.execute(runnable);
     }*/
+
+    /**
+     * 颜色最大值255
+     * @return
+     */
+    public static int createTextColor() {
+        Random random = new Random();
+        return  random.nextInt(180);
+    }
 }

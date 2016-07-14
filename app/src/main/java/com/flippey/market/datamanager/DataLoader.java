@@ -43,7 +43,7 @@ public class DataLoader {
         return GsonUtil.parseJsonToBean(data, clazz);
     }
 
-    public <T> List<T> getDataList(String url,Type type) {
+    public List<?> getDataList(String url,Type type) {
         //先去网络获取数据，如果没有再去本地获取数据
         String data = "";
         data = HttpUtil.getHttpUtil().dataGet(url);
@@ -58,6 +58,7 @@ public class DataLoader {
             //保存数据到本地缓存
             CacheUtil.getCacheUtil().saveCacheData(url, data);
         }
-        return (List<T>) GsonUtil.parseJsonToList(data,type);
+        List<?> objects = GsonUtil.parseJsonToList(data, type);
+        return objects;
     }
 }

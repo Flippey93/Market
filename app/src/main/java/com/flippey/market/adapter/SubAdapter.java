@@ -16,7 +16,7 @@ public class SubAdapter extends BasicAdapter{
     }
 
     @Override
-    BasicHolder creatViewholder() {
+    BasicHolder creatViewholder(int pos) {
         return new SubHolder();
     }
 }

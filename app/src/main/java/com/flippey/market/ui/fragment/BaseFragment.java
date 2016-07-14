@@ -21,18 +21,21 @@ public abstract class BaseFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mLoadPager = new LoadPager(MyAppliocation.sContext){
-            @Override
-            public Object loadData() {
-                return initData();
-            }
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+    Bundle savedInstanceState) {
+        if (mLoadPager == null) {
+            mLoadPager = new LoadPager(MyAppliocation.sContext) {
+                @Override
+                public Object loadData() {
+                    return initData();
+                }
 
-            @Override
-            protected View creatSuccessPager() {
-                return onCreateSuccess();
-            }
-        };
+                @Override
+                protected View creatSuccessPager() {
+                    return onCreateSuccess();
+                }
+            };
+        }
         return mLoadPager;
     }
 

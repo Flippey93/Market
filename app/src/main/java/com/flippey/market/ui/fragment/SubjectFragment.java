@@ -35,7 +35,7 @@ public class SubjectFragment extends BaseFragment {
             mData.clear();
         }
         Type type = new TypeToken<List<SubjectBean>>(){}.getType();
-        final List<SubjectBean> list = DataLoader.getDataLoader().getDataList(UrlUtil.subURL+mData.size(), type);
+        final List<SubjectBean> list = (List<SubjectBean>) DataLoader.getDataLoader().getDataList(UrlUtil.subURL+mData.size(), type);
         UiUtil.runOnUiThread(new Runnable() {
             @Override
             public void run() {

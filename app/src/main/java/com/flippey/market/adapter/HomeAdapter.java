@@ -16,7 +16,7 @@ public class HomeAdapter extends BasicAdapter<HomeBean.AppInfo> {
     }
 
     @Override
-    BasicHolder creatViewholder() {
+    BasicHolder creatViewholder(int pos) {
         return new HomeHolder();
     }
 }

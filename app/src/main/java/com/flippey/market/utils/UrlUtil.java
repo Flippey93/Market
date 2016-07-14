@@ -15,5 +15,8 @@ public class UrlUtil {
     public static final String homeURL = hostURL+"home?index=";
     //专题地址
     public static final String subURL = hostURL+"subject?index=";
-    //
+    //推荐地址
+    public static final String recURL = hostURL+"recommend?index=0";
+    //分类地址
+    public static final String catURL = hostURL + "category?index=0";
 }

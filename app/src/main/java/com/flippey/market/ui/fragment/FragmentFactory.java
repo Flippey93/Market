@@ -32,7 +32,7 @@ public class FragmentFactory {
                     fragment = new RecomendFragment();
                     break;
                 case 5:
-                    fragment = new SortFragment();
+                    fragment = new CategoryFragment();
                     break;
                 case 6:
                     fragment = new HotFragment();

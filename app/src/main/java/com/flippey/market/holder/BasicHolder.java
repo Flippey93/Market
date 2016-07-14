@@ -6,6 +6,8 @@ import com.flippey.market.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
+import butterknife.ButterKnife;
+
 /**
  * @ Author      Flippey
  * @ Creat Time  2016/7/12 19:59
@@ -23,6 +25,7 @@ public abstract class BasicHolder<T>{
             .displayer(new FadeInBitmapDisplayer(1000)).build(); //显示效果淡入淡出
     public BasicHolder() {
         convertView = creatConvertView();
+        ButterKnife.bind(this, convertView);
         convertView.setTag(this);
     }
 
