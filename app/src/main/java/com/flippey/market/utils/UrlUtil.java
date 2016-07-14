@@ -19,4 +19,6 @@ public class UrlUtil {
     public static final String recURL = hostURL+"recommend?index=0";
     //分类地址
     public static final String catURL = hostURL + "category?index=0";
+    //热门地址
+    public static final String hotURL = hostURL + "hot?index=0";
 }
