@@ -1,5 +1,7 @@
 package com.flippey.market.utils;
 
+import android.util.Log;
+
 import java.io.IOException;
 
 import okhttp3.OkHttpClient;
@@ -11,6 +13,8 @@ import okhttp3.Response;
  * @ Creat Time  2016/7/11 22:11
  */
 public class HttpUtil {
+
+    private static final String TAG = "HttpUtil";
 
     private HttpUtil() {
 
@@ -27,11 +31,13 @@ public class HttpUtil {
      * @return
      */
     public String dataGet(String url) {
+
         try {
             OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
             Request request = new Request.Builder()
                     .url(url)
                     .build();
+            Log.d(TAG, "run: " + Thread.currentThread().getName());
             Response response = okHttpClient.newCall(request).execute();
             return response.body().string();
         } catch (IOException e) {

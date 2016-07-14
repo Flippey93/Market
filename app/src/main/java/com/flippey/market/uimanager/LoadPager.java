@@ -16,6 +16,7 @@ import java.util.List;
  */
 public abstract class LoadPager extends FrameLayout {
 
+    private static final String TAG = "LoadPager";
     private View mLoadPager;
     private View mErrorPager;
     private View mSuccessPager;
@@ -87,7 +88,7 @@ public abstract class LoadPager extends FrameLayout {
      * 获取数据，展示pager
      */
     private void showRightPager() {
-        UiUtil.runOnSubThread(new Runnable() {
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 Object object = loadData();
@@ -100,7 +101,7 @@ public abstract class LoadPager extends FrameLayout {
                     }
                 });
             }
-        });
+        }).start();
     }
 
     private int checkData(Object object) {

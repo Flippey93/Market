@@ -30,8 +30,10 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected Object initData() {
-        HomeBean homeBean = DataLoader.getDataLoader().getDataBean(UrlUtil.homeURL+mList.size(), HomeBean.class);
-        final List<HomeBean.AppInfo> list = homeBean.getList();
+        //System.out.println(UrlUtil.homeURL+mList.size()+"...................z");
+        final HomeBean homeBean = DataLoader.getDataLoader().getDataBean(UrlUtil.homeURL +
+                mList.size(), HomeBean.class);
+        //final List<HomeBean.AppInfo> list = homeBean.getList();
         //在这里判断是上拉还是下拉
         if (mPullToRefreshListView.getCurrentMode() == PullToRefreshBase.Mode.PULL_FROM_START) {
             //如果是下拉
@@ -40,7 +42,7 @@ public class HomeFragment extends BaseFragment {
         UiUtil.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                mList.addAll(list);
+                mList.addAll(homeBean.getList());
                 mAdapter.notifyDataSetChanged();
                 mPullToRefreshListView.onRefreshComplete();
             }
@@ -57,7 +59,12 @@ public class HomeFragment extends BaseFragment {
         mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>(){
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-               mLoadPager.loadData();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mLoadPager.loadData();
+                    }
+                }).start();
             }
         });
         mAdapter = new HomeAdapter(mList);
