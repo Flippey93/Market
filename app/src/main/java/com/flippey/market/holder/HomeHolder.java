@@ -22,15 +22,17 @@ public class HomeHolder extends BasicHolder<HomeBean.AppInfo>{
     TextView  mHome_Size;
     TextView  mHome_Desc;
     RatingBar mHome_Star;
+    private View mView;
+
     @Override
     public View creatConvertView() {
-        View view = View.inflate(MyAppliocation.sContext, R.layout.home_item, null);
-        mHome_Icon = (ImageView) view.findViewById(R.id.home_item_iv_icon);
-        mHome_Name = (TextView) view.findViewById(R.id.home_item_tv_name);
-        mHome_Size = (TextView) view.findViewById(R.id.home_item_tv_size);
-        mHome_Desc = (TextView) view.findViewById(R.id.home_item_tv_desc);
-        mHome_Star = (RatingBar) view.findViewById(R.id.home_item_iv_star);
-        return view;
+        mView = View.inflate(MyAppliocation.sContext, R.layout.home_item, null);
+        mHome_Icon = (ImageView) mView.findViewById(R.id.home_item_iv_icon);
+        mHome_Name = (TextView) mView.findViewById(R.id.home_item_tv_name);
+        mHome_Size = (TextView) mView.findViewById(R.id.home_item_tv_size);
+        mHome_Desc = (TextView) mView.findViewById(R.id.home_item_tv_desc);
+        mHome_Star = (RatingBar) mView.findViewById(R.id.home_item_iv_star);
+        return mView;
     }
 
     @Override

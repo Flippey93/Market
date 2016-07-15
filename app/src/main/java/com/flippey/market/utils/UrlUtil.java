@@ -21,4 +21,6 @@ public class UrlUtil {
     public static final String catURL = hostURL + "category?index=0";
     //热门地址
     public static final String hotURL = hostURL + "hot?index=0";
+    //应用详情页地址
+    public static final String appURL = hostURL + "detail?packageName=";
 }

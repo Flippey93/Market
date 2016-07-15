@@ -60,7 +60,13 @@ public abstract class LoadPager extends FrameLayout {
                 public void onClick(View v) {
                     mCurrentState = mLoadingState;
                     initPager();
-                    loadData();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadData();
+                        }
+                    }).start();
+
                 }
             });
         }

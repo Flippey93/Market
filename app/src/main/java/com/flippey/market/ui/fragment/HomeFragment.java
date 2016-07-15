@@ -1,6 +1,8 @@
 package com.flippey.market.ui.fragment;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.flippey.market.R;
@@ -8,6 +10,7 @@ import com.flippey.market.adapter.HomeAdapter;
 import com.flippey.market.bean.HomeBean;
 import com.flippey.market.datamanager.DataLoader;
 import com.flippey.market.global.MyAppliocation;
+import com.flippey.market.ui.activity.AppInfoActivity;
 import com.flippey.market.utils.UiUtil;
 import com.flippey.market.utils.UrlUtil;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -71,6 +74,15 @@ public class HomeFragment extends BaseFragment {
             }
         });
         mAdapter = new HomeAdapter(mList);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), AppInfoActivity.class);
+                String packageName = mList.get(position-1).getPackageName();
+                intent.putExtra("p", packageName);
+                startActivity(intent);
+            }
+        });
         mListView.setAdapter(mAdapter);
         return mPullToRefreshListView;
     }

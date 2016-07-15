@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#2b0142">
+    <!--滚动显示的界面-->
+    <ScrollView
+        android:id="@+id/sv_app_info_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_app_info_bottom"
+        android:layout_weight="1">
+        <!--引入详情-->
+        <LinearLayout
+            android:id="@+id/ll_app_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+
+    <!--下载按钮界面-->
+    <FrameLayout
+        android:id="@+id/fl_app_info_bottom_layout"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+</LinearLayout>
