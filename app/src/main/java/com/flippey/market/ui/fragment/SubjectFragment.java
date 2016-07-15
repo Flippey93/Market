@@ -34,8 +34,13 @@ public class SubjectFragment extends BaseFragment {
         if (mPullToRefreshListView.getCurrentMode() == PullToRefreshBase.Mode.PULL_FROM_START) {
             mData.clear();
         }
-        Type type = new TypeToken<List<SubjectBean>>(){}.getType();
-        final List<SubjectBean> list = (List<SubjectBean>) DataLoader.getDataLoader().getDataList(UrlUtil.subURL+mData.size(), type);
+        Type type = new TypeToken<List<SubjectBean>>() {
+        }.getType();
+        final List<SubjectBean> list = (List<SubjectBean>) DataLoader.getDataLoader().getDataList
+                (UrlUtil.subURL + mData.size(), type);
+        if (list == null) {
+            return null;
+        }
         UiUtil.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -52,7 +57,8 @@ public class SubjectFragment extends BaseFragment {
         mPullToRefreshListView = (PullToRefreshListView) View.inflate(MyAppliocation
                 .sContext, R.layout.listview, null);
         mPullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);//设置两边都可以刷新
-        mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+        mPullToRefreshListView.setOnRefreshListener(new PullToRefreshBase
+                .OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
                 //加载数据

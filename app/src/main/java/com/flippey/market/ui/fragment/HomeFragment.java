@@ -33,6 +33,9 @@ public class HomeFragment extends BaseFragment {
         //System.out.println(UrlUtil.homeURL+mList.size()+"...................z");
         final HomeBean homeBean = DataLoader.getDataLoader().getDataBean(UrlUtil.homeURL +
                 mList.size(), HomeBean.class);
+        if (homeBean == null) {
+            return null;
+        }
         //final List<HomeBean.AppInfo> list = homeBean.getList();
         //在这里判断是上拉还是下拉
         if (mPullToRefreshListView.getCurrentMode() == PullToRefreshBase.Mode.PULL_FROM_START) {

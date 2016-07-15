@@ -1,7 +1,9 @@
 package com.flippey.market.adapter;
 
+import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.BaseAdapter;
 
 import com.flippey.market.holder.BasicHolder;
@@ -45,7 +47,14 @@ public abstract class BasicAdapter<T> extends BaseAdapter{
             holder = (BasicHolder) convertView.getTag();
         }
         holder.bindData(mData.get(position));
-        return holder.getConvertView();
+        //添加动画
+        View view = holder.getConvertView();
+        view.setScaleX(.6f);
+        view.setY(.6f);
+        //使用动画，将view样式恢复
+        ViewCompat.animate(view).scaleY(1.0f).scaleX(1.0f).setDuration(1000).setInterpolator(new
+                OvershootInterpolator()).start();
+        return view;
     }
 
     abstract BasicHolder creatViewholder(int position);

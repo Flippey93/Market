@@ -3,6 +3,7 @@ package com.flippey.market.uimanager;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.flippey.market.R;
@@ -25,6 +26,7 @@ public abstract class LoadPager extends FrameLayout {
     public static final int mSuccessState = 200; //加载成功状态
     public static final int mErrorState = 400; //加载失败状态
     public int mCurrentState = mSuccessState;
+    private Button mBtn;
 
 
     public LoadPager(Context context) {
@@ -52,6 +54,15 @@ public abstract class LoadPager extends FrameLayout {
         addView(mLoadPager);
         if (mErrorPager == null) {
             mErrorPager = View.inflate(context, R.layout.page_error, null);
+            mBtn = (Button) mErrorPager.findViewById(R.id.btn_reload);
+            mBtn.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mCurrentState = mLoadingState;
+                    initPager();
+                    loadData();
+                }
+            });
         }
         addView(mErrorPager);
         if (mSuccessPager == null) {
